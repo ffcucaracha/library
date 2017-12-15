@@ -2,6 +2,10 @@ package order;
 
 import java.util.*;
 import java.text.*;
+import java.sql.*;
+import javax.sql.*;
+import oracle.jdbc.*;
+import oracle.jdbc.pool.*;
 
 public class OrderList {
  
@@ -9,11 +13,14 @@ public class OrderList {
     private Integer total_count;
     private Integer init = 10;
     private Order o;
+    private Connection c = null; 
+    private Statement st = null; 
+    private ResultSet rs = null;
 
     
     public OrderList()
     {
-        SimpleDateFormat format = new SimpleDateFormat();
+        /*SimpleDateFormat format = new SimpleDateFormat();
         format.applyPattern("dd.MM.yyyy");
         Date date = new Date();
         String d = new String("");
@@ -35,6 +42,37 @@ public class OrderList {
             r++;
         }
         this.total_count = this.init;
+*/
+        try{
+        OracleDataSource ods = new OracleDataSource(); 
+        ods.setServerName("paralab"); 
+        ods.setServiceName("lab.univer.omsk.su"); 
+        ods.setPortNumber(1521); 
+        ods.setUser("AnnaS"); 
+        ods.setPassword("1");
+        ods.setDriverType("thin"); 
+        ods.setNetworkProtocol("tcp");       
+        
+            c = ods.getConnection();
+            st=c.createStatement();
+            
+            String sql = "select * from tbl_order";
+            rs = st.executeQuery(sql);
+            total_count = st.getMaxRows();
+           // if (rs.next())
+          //  else total_count = 10;
+           /* for(int i = 1; i <= total_count; i++)
+            {
+                Order o1 = new Order(i);
+                oList.put(i,o1);
+            } */
+ 
+        } catch(Exception e) {
+        } finally {
+            try{st.close();} catch(Exception e){}
+            try{c.close();} catch(Exception e){}
+        }
+        
     }
     
     public Integer getTotalCount()

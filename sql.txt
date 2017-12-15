@@ -1,0 +1,18 @@
+create table tbl_order(id Integer, reader_id Integer, librarian_id Integer, exemplar_id Integer, order_date Date);
+
+alter table tbl_order add constraint pk_order primary key(id);
+
+create sequence order_seq start with 1 increment by 1;
+
+DELIMITER @@
+CREATE OR REPLACE TRIGGER ANNAS.TBL_ORDER_BI 
+BEFORE INSERT ON TBL_ORDER FOR EACH ROW
+DEClARE
+id integer;
+BEGIN
+  select order_seq.nextval into id from dual;
+  :new.ID := id;
+  
+  INSERT INTO ANNAS.TBL_ORDER('id','reader_id','librarian_id','exemplar_id','order_date') values (:new.ID, :new.READER_ID, :new.LIBRARIAN_ID, :new.EXEMPLAR_ID, :new.ORDER_DATE);
+END; 
+/
