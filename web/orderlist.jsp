@@ -23,9 +23,12 @@
         <h1 align="center">Список заказов</h1>
         <table border="1" align="center">
             <thead><td>Номер заказа</td><td>Заказчик</td><td>Библиотекарь</td><td>Дата</td><td></td></thead>
-         
-    <tr><td><%=oList.getTotalCount()%></td></tr>
-    <%//}%>
+            <% for(Order order : oList.values()){
+            %>
+            <tr><td><%=order.getId()%></td><td><%=order.getReader(pList,order.getReaderId())%></td>
+                <td><%=order.getReader(pList,order.getLibrarianId())%></td><td><%=order.getDate()%></td>
+                <td><form action="orderview.jsp"><input name="id_" value="<%=order.getId() %>" type="hidden"/><input type="submit" value="Просмотреть"/></form></td></tr>
+            <%}%>
         </table>
     </body>
 </html>

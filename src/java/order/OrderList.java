@@ -13,18 +13,16 @@ public class OrderList {
     private Integer total_count;
     private Integer init = 10;
     private Order o;
-    private Connection c = null; 
-    private Statement st = null; 
-    private ResultSet rs = null;
+    
 
     
     public OrderList()
     {
-        /*SimpleDateFormat format = new SimpleDateFormat();
+        SimpleDateFormat format = new SimpleDateFormat();
         format.applyPattern("dd.MM.yyyy");
-        Date date = new Date();
+        java.util.Date date = new java.util.Date();
         String d = new String("");
-        
+        /*
         Integer j = 1;
         Integer r = 1;
         
@@ -43,6 +41,10 @@ public class OrderList {
         }
         this.total_count = this.init;
 */
+        Connection c = null; 
+        Statement st = null;
+        //Integer i = 1;
+        total_count = 1;
         try{
         OracleDataSource ods = new OracleDataSource(); 
         ods.setServerName("paralab"); 
@@ -54,20 +56,31 @@ public class OrderList {
         ods.setNetworkProtocol("tcp");       
         
             c = ods.getConnection();
-            st=c.createStatement();
-            
-            String sql = "select * from tbl_order";
-            rs = st.executeQuery(sql);
-            total_count = st.getMaxRows();
-           // if (rs.next())
-          //  else total_count = 10;
-           /* for(int i = 1; i <= total_count; i++)
-            {
-                Order o1 = new Order(i);
-                oList.put(i,o1);
-            } */
- 
-        } catch(Exception e) {
+            try{
+                st=c.createStatement();
+
+                String sql = "SELECT * FROM ANNAS.TBL_ORDER";
+                ResultSet rs = st.executeQuery(sql);
+                while(rs.next()){
+    
+                    //Order o1 = new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getDate(5));
+                 d = "25.11.2017";
+            try{
+                date = format.parse(d);
+            } catch( ParseException e) {
+            }
+             
+                    Order o1 = new Order(rs.getInt(1), 3, 2, 2, date);
+                    oList.put(total_count,o1);
+                    total_count++;
+                } 
+            }
+             catch(SQLException s){						
+				s.printStackTrace();
+			 }
+            c.close();
+            st.close();
+        } catch(Exception e) { e.printStackTrace();
         } finally {
             try{st.close();} catch(Exception e){}
             try{c.close();} catch(Exception e){}
