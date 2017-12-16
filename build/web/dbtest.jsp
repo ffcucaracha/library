@@ -18,7 +18,7 @@ try{
     c=ods.getConnection();
     st=c.createStatement();
     
-    ResultSet r = st.executeQuery("select * from tbl_order");
+    ResultSet r = st.executeQuery("select * from tbl_order where id=1");
     
     while(r.next())
     { %>

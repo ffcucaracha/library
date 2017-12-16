@@ -27,7 +27,7 @@
             %>
             <tr><td><%=order.getId()%></td><td><%=order.getReader(pList,order.getReaderId())%></td>
                 <td><%=order.getReader(pList,order.getLibrarianId())%></td><td><%=order.getDate()%></td>
-                <td><form action="orderview.jsp"><input name="id_" value="<%=order.getId() %>" type="hidden"/><input type="submit" value="Просмотреть"/></form></td></tr>
+                <td><form action="orderview.jsp"><input name="id" value="<%=order.getId() %>" type="hidden"/><input type="submit" value="Просмотреть"/></form></td></tr>
             <%}%>
         </table>
     </body>

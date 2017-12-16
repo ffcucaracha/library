@@ -15,9 +15,6 @@ public class Order {
     private Integer librarian_id;
     private Integer exemplar_id;
     private java.util.Date order_date;
-    private Connection c = null; 
-    private Statement st = null; 
-    private ResultSet rs = null;
     
     public Order(Integer id_, Integer reader_id_, Integer librarian_id_, Integer exemplar_id_, java.util.Date order_date_)
     {
@@ -30,6 +27,8 @@ public class Order {
     
     public Order(Integer id_)
     {
+        Connection c = null; 
+        Statement st = null; 
         try{
         OracleDataSource ods = new OracleDataSource(); 
         ods.setServerName("paralab"); 
@@ -44,18 +43,18 @@ public class Order {
             st=c.createStatement();
             
             String sql = "select * from tbl_order where id = "+id_;
-            rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery(sql);
     
             this.reader_id = rs.getInt(2);
             this.librarian_id = rs.getInt(3);
-            this.reader_id = rs.getInt(2);
-            this.librarian_id = rs.getInt(3);
+            this.reader_id = rs.getInt(4);
+            this.order_date = rs.getDate(5);
  
         } catch(Exception e) {
-            this.reader_id = null;
-            this.librarian_id = null;
-            this.reader_id = null;
-            this.librarian_id = null;
+            this.reader_id = 1;
+            this.librarian_id = 1;
+            this.reader_id = 1;
+            //this.librarian_id = null;
         } finally {
             try{st.close();} catch(Exception e){}
             try{c.close();} catch(Exception e){}
