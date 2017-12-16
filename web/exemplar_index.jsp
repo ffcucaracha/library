@@ -23,7 +23,7 @@
         </tr>
         <%=list.getList()%>
         <tr>
-        <form action="create.jsp">
+        <form action="exemplar_create.jsp">
             <input hidden="" name="i" value="<%=list.getI()%>"/>
             <td><input name="inv num"></td>
             <td><input name="price"></td>

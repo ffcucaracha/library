@@ -9,6 +9,6 @@
 try{
     Integer i = Integer.parseInt(request.getParameter("i"));
     list.deleteFromHashMap(i);
-    out.print("Delete! <button><a href=\"index.jsp\">go back</a></button>");
+    out.print("Delete! <button><a href=\"exemplar_index.jsp\">go back</a></button>");
 } catch(Exception e){}
 %>

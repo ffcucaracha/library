@@ -22,7 +22,7 @@ public class ExemplarList {
             for(int j: EList.keySet())
             {
                 ex=EList.get(j);
-                answer +="<tr><td>"+ex.getInv()+"</td><td>"+ex.getPrice()+"</td><td>"+"<form action=\"delete.jsp\"><input hidden=\"\" name=\"i\" value=\""+j+"\"/><input type=\"submit\" value=\"X\"></form></td></tr>";
+                answer +="<tr><td>"+ex.getInv()+"</td><td>"+ex.getPrice()+"</td><td>"+"<form action=\"exemplar_delete.jsp\"><input hidden=\"\" name=\"i\" value=\""+j+"\"/><input type=\"submit\" value=\"X\"></form></td></tr>";
             }
             return answer;
         }

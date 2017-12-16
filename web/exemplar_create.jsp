@@ -13,7 +13,7 @@ try
     Integer price_=Integer.parseInt(request.getParameter("price"));
     Exemplar ex = new Exemplar(i,price_);
     list.addToHashMap(ex);
-    out.print("Add! <button><a href=\"index.jsp\">go back</a></button>");
+    out.print("Add! <button><a href=\"exemplar_index.jsp\">go back</a></button>");
 }
 catch(Exception e){    out.print(e.getMessage());
 };
