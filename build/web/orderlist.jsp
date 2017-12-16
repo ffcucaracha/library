@@ -1,4 +1,4 @@
-<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" import="java.util.*, order.*, people.*" %>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="true" import="java.util.*, order.*, people.*, java.sql.*, javax.sql.*, oracle.jdbc.*, oracle.jdbc.pool.*" %>
 <jsp:useBean id="oList" class="order.OrderList" scope="application"/>
 <jsp:useBean id="pList" class="people.PeopleList" scope="application"/>
 

@@ -18,14 +18,14 @@ try{
     c=ods.getConnection();
     st=c.createStatement();
     
-    ResultSet r = st.executeQuery("select * from people");
+    ResultSet r = st.executeQuery("select * from tbl_order");
     
     while(r.next())
     { %>
-    <tr><td><%=r.getInt(1)%></td><td><%=r.getString(2)%></td><td><%=r.getString(3)%></td></tr>
+    <tr><td><%=r.getInt(1)%></td><td><%=r.getInt(2)%></td><td><%=r.getInt(3)%></td></tr>
    <% }
     
-    pst = c.prepareStatement("insert into people(FIRST_NAME, SECOND_NAME, FATHER_NAME, BIRTHDAY) values(?,?,?,?)");
+    /* pst = c.prepareStatement("insert into people(FIRST_NAME, SECOND_NAME, FATHER_NAME, BIRTHDAY) values(?,?,?,?)");
     pst.setString(2, "Александр");
     pst.setString(3, "Мамонов");
     pst.setString(4, "Владимирович");
@@ -44,7 +44,7 @@ try{
     cst.registerOutParameter(6, Types.NUMERIC);
     cst.execute();
 
-    out.println("n="+cst.getBigDecimal(6)+" f()= "+cst.getString(2));
+    out.println("n="+cst.getBigDecimal(6)+" f()= "+cst.getString(2)); */
 
 } catch(Exception e) {
     out.println(e.getMessage());

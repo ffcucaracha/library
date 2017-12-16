@@ -63,14 +63,8 @@ public class OrderList {
                 ResultSet rs = st.executeQuery(sql);
                 while(rs.next()){
     
-                    //Order o1 = new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getDate(5));
-                 d = "25.11.2017";
-            try{
-                date = format.parse(d);
-            } catch( ParseException e) {
-            }
-             
-                    Order o1 = new Order(rs.getInt(1), 3, 2, 2, date);
+                    Order o1 = new Order(rs.getInt(1),rs.getInt(2),rs.getInt(3),rs.getInt(4),rs.getDate(5));
+                 
                     oList.put(total_count,o1);
                     total_count++;
                 } 
@@ -84,7 +78,7 @@ public class OrderList {
         } finally {
             try{st.close();} catch(Exception e){}
             try{c.close();} catch(Exception e){}
-        }
+        } 
         
     }
     
