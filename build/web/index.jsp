@@ -60,6 +60,7 @@ and open the template in the editor.
                 <td class="cell" align="center"><form action="list.jsp"><input  type="hidden" name="type" value="books"/><input class="nbutton" type="submit" value="Книги"></form></td>
                 <td class="cell" align="center"><form action="list.jsp"><input type="hidden" name="type" value="people"/><input class="nbutton" type="submit" value="Люди"></form></td>
                 <td class="cell" align="center"><form action="orderlist.jsp"><input class="nbutton" type="submit" value="Заказы"></form></td>
+                <td class="cell" align="center"><form action="exemplar_index.jsp"><input class="nbutton" type="submit" value="Экземпляры"></form></td>
                <!-- <td><form action="dbtest.jsp"><input type="submit" value="dbtest"></form></td> -->
             </tr>
         </table>
